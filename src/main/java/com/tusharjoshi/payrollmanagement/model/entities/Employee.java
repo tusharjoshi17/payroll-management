@@ -4,58 +4,79 @@ import lombok.Getter;
 import java.time.LocalDate;
 
 
+@Getter
 @Entity
 @Table(name = "employeeDetails")
 public class Employee {
 
-    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long employeeId;
 
-    @Getter
     private String PersonalId;
 //    @Column(nullable = false)
-    @Getter
     private String firstName;
-    @Getter
     private String middleName;
 //    @Column(nullable = false)
-    @Getter
     private String lastName;
 
-    @Getter
     private String phoneNumber;
-    @Getter
     private String city;
-    @Getter
     private String address;
-    @Getter
     private long pinCode;
-    @Getter
     private String qualification;
-    @Getter
     private int currentExperience;
-    @Getter
     private LocalDate dateOfBirth;
-    @Getter
     private LocalDate startDate;
-    @Getter
     private LocalDate endDate;
+
     public enum Gender{
         Male,
         Female
     }
-    @Getter
     private Gender gender;
     public enum MaritalStatus{
         Married,
         Unmarried
     }
-    @Getter
     private MaritalStatus maritalStatus;
-    private boolean isMarried;
-    private boolean isManager;
+
+    @ManyToOne
+    @JoinColumn(name="department_id")
+    private Department department;
+
+//    @OneToOne(mappedBy = "employee")
+//    private SalaryInformation salaryInformation;
+//
+//    @OneToOne(mappedBy = "employee")
+//    private WorkingHistory workingHistory;
+
+
+    public Employee(String PersonalId, String firstName, String middleName, String lastName,
+                    String phoneNumber, String city, String address, long pinCode, String qualification,
+                    int currentExperience, LocalDate dateOfBirth, LocalDate startDate, LocalDate endDate,
+                    Gender gender, MaritalStatus maritalStatus, Department department) {
+        this.PersonalId = PersonalId;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.city = city;
+        this.address = address;
+        this.pinCode = pinCode;
+        this.qualification = qualification;
+        this.currentExperience = currentExperience;
+        this.dateOfBirth = dateOfBirth;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.gender = gender;
+        this.maritalStatus = maritalStatus;
+        this.department = department;
+    }
+
+    public Employee() {
+    }
+
 
     public void setEmployeeId(long employeeId) {
         this.employeeId = employeeId;
@@ -109,27 +130,15 @@ public class Employee {
         this.maritalStatus = maritalStatus;
     }
 
-    public boolean isMarried() {
-        return isMarried;
-    }
-
-    public void setMarried(boolean married) {
-        isMarried = married;
-    }
-
-    public boolean isManager() {
-        return isManager;
-    }
-
-    public void setManager(boolean manager) {
-        isManager = manager;
-    }
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
+    }
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public void setEndDate(LocalDate endDate) {
