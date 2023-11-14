@@ -34,11 +34,13 @@ public class Employee {
         Male,
         Female
     }
+    @Enumerated(EnumType.STRING)
     private Gender gender;
     public enum MaritalStatus{
         Married,
         Unmarried
     }
+    @Enumerated(EnumType.STRING)
     private MaritalStatus maritalStatus;
 
     @ManyToOne

@@ -3,34 +3,31 @@ package com.tusharjoshi.payrollmanagement.model.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.time.LocalDate;
+
+@Getter
 @Entity
 public class SalaryInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
     private long salaryId;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    @Getter
     private Employee employee;
-    @Getter
     private double monthlySalary;
-    @Getter
     private double monthlyDeductions;
-    @Getter
-    private int salaryPeriodStartDay;
-    @Getter
-    private int salaryPeriodStartMonth;
-    @Getter
-    private int salaryPeriodStartYear;
-    @Getter
-    private int salaryPeriodEndDay;
-    @Getter
-    private int salaryPeriodEndMonth;
-    @Getter
-    private int salaryPeriodEndYear;
+    private LocalDate salaryPeriodStartDate;
+    private LocalDate salaryPeriodEndDate;
 
+    public SalaryInformation(Employee employee, double monthlySalary, double monthlyDeductions, LocalDate salaryPeriodStartDate, LocalDate salaryPeriodEndDate) {
+        this.employee = employee;
+        this.monthlySalary = monthlySalary;
+        this.monthlyDeductions = monthlyDeductions;
+        this.salaryPeriodStartDate = salaryPeriodStartDate;
+        this.salaryPeriodEndDate = salaryPeriodEndDate;
+    }
+    public SalaryInformation(){}
 
     public void setSalaryId(long salaryId) {
         this.salaryId = salaryId;
@@ -48,29 +45,11 @@ public class SalaryInformation {
         this.monthlyDeductions = monthlyDeductions;
     }
 
-    public void setSalaryPeriodStartDay(int salaryPeriodStartDay) {
-        this.salaryPeriodStartDay = salaryPeriodStartDay;
+    public void setSalaryPeriodStartDate(LocalDate salaryPeriodStartDate) {
+        this.salaryPeriodStartDate = salaryPeriodStartDate;
     }
 
-    public void setSalaryPeriodStartMonth(int salaryPeriodStartMonth) {
-        this.salaryPeriodStartMonth = salaryPeriodStartMonth;
+    public void setSalaryPeriodEndDate(LocalDate salaryPeriodEndDate) {
+        this.salaryPeriodEndDate = salaryPeriodEndDate;
     }
-
-    public void setSalaryPeriodStartYear(int salaryPeriodStartYear) {
-        this.salaryPeriodStartYear = salaryPeriodStartYear;
-    }
-
-    public void setSalaryPeriodEndDay(int salaryPeriodEndDay) {
-        this.salaryPeriodEndDay = salaryPeriodEndDay;
-    }
-
-    public void setSalaryPeriodEndMonth(int salaryPeriodEndMonth) {
-        this.salaryPeriodEndMonth = salaryPeriodEndMonth;
-    }
-
-    public void setSalaryPeriodEndYear(int salaryPeriodEndYear) {
-        this.salaryPeriodEndYear = salaryPeriodEndYear;
-    }
-
-
 }

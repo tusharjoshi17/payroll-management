@@ -3,38 +3,36 @@ package com.tusharjoshi.payrollmanagement.model.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.time.LocalDate;
+
+@Getter
 @Entity
 public class TimeInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
     private long timeInformationId;
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    @Getter
     private Employee employee;
-    @Getter
     private int workedHours;
-    @Getter
     private int offHours;
-    @Getter
     private int daysOff;
-    @Getter
     private int overTime;
-    @Getter
     private int extraDays;
-    @Getter
-    private int workPeriodStartDay;
-    @Getter
-    private int workPeriodStartMonth;
-    @Getter
-    private int workPeriodStartYear;
-    @Getter
-    private int workPeriodEndDay;
-    @Getter
-    private int workPeriodEndMonth;
-    @Getter
-    private int workPeriodEndYear;
+    private LocalDate workPeriodStartDate;
+    private LocalDate workPeriodEndDate;
+
+    public TimeInformation(Employee employee, int workedHours, int offHours, int daysOff, int overTime, int extraDays, LocalDate workPeriodStartDate, LocalDate workPeriodEndDate) {
+        this.employee = employee;
+        this.workedHours = workedHours;
+        this.offHours = offHours;
+        this.daysOff = daysOff;
+        this.overTime = overTime;
+        this.extraDays = extraDays;
+        this.workPeriodStartDate = workPeriodStartDate;
+        this.workPeriodEndDate = workPeriodEndDate;
+    }
+    public TimeInformation(){}
 
     public void setTimeInformationId(long timeInformationId) {
         this.timeInformationId = timeInformationId;
@@ -64,27 +62,11 @@ public class TimeInformation {
         this.extraDays = extraDays;
     }
 
-    public void setWorkPeriodStartDay(int workPeriodStartDay) {
-        this.workPeriodStartDay = workPeriodStartDay;
+    public void setWorkPeriodStartDate(LocalDate workPeriodStartDate) {
+        this.workPeriodStartDate = workPeriodStartDate;
     }
 
-    public void setWorkPeriodStartMonth(int workPeriodStartMonth) {
-        this.workPeriodStartMonth = workPeriodStartMonth;
-    }
-
-    public void setWorkPeriodStartYear(int workPeriodStartYear) {
-        this.workPeriodStartYear = workPeriodStartYear;
-    }
-
-    public void setWorkPeriodEndDay(int workPeriodEndDay) {
-        this.workPeriodEndDay = workPeriodEndDay;
-    }
-
-    public void setWorkPeriodEndMonth(int workPeriodEndMonth) {
-        this.workPeriodEndMonth = workPeriodEndMonth;
-    }
-
-    public void setWorkPeriodEndYear(int workPeriodEndYear) {
-        this.workPeriodEndYear = workPeriodEndYear;
+    public void setWorkPeriodEndDate(LocalDate workPeriodEndDate) {
+        this.workPeriodEndDate = workPeriodEndDate;
     }
 }

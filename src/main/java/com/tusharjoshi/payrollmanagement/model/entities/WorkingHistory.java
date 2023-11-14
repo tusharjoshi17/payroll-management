@@ -5,28 +5,32 @@ import lombok.Getter;
 
 import java.time.LocalDate;
 
+@Getter
 @Entity
 @Table(name = "working_history")
 public class WorkingHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
     private long workingHistoryId;
 @ManyToOne
 @JoinColumn(name = "employee_id")
-@Getter
 private Employee employee;
 //(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-@Getter
 private String companyName;
-@Getter
 private String employerName;
-@Getter
 private int yearsOfExperience;
-@Getter
 private LocalDate previousStartDate;
-@Getter
 private LocalDate previousEndDate;
+
+    public WorkingHistory(Employee employee, String companyName, String employerName, int yearsOfExperience, LocalDate previousStartDate, LocalDate previousEndDate) {
+        this.employee = employee;
+        this.companyName = companyName;
+        this.employerName = employerName;
+        this.yearsOfExperience = yearsOfExperience;
+        this.previousStartDate = previousStartDate;
+        this.previousEndDate = previousEndDate;
+    }
+    public WorkingHistory(){}
 
     public void setWorkingHistoryId(long workingHistoryId) {
         this.workingHistoryId = workingHistoryId;
