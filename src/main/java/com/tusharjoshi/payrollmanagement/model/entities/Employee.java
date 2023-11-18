@@ -11,7 +11,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long employeeId;
+    private Long employeeId;
 
     private String PersonalId;
 //    @Column(nullable = false)
@@ -21,12 +21,12 @@ public class Employee {
     private String lastName;
 
     private String phoneNumber;
-    private String city;
     private String address;
-    private long pinCode;
-    private String qualification;
-    private int currentExperience;
+    private String city;
+    private Long pinCode;
     private LocalDate dateOfBirth;
+    private String qualification;
+    private Integer currentExperience;
     private LocalDate startDate;
     private LocalDate endDate;
 
@@ -55,8 +55,8 @@ public class Employee {
 
 
     public Employee(String PersonalId, String firstName, String middleName, String lastName,
-                    String phoneNumber, String city, String address, long pinCode, String qualification,
-                    int currentExperience, LocalDate dateOfBirth, LocalDate startDate, LocalDate endDate,
+                    String phoneNumber, String city, String address, Long pinCode, String qualification,
+                    Integer currentExperience, LocalDate dateOfBirth, LocalDate startDate, LocalDate endDate,
                     Gender gender, MaritalStatus maritalStatus, Department department) {
         this.PersonalId = PersonalId;
         this.firstName = firstName;
@@ -80,7 +80,7 @@ public class Employee {
     }
 
 
-    public void setEmployeeId(long employeeId) {
+    public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
 
@@ -112,7 +112,7 @@ public class Employee {
         this.address = address;
     }
 
-    public void setPinCode(long pinCode) {
+    public void setPinCode(Long pinCode) {
         this.pinCode = pinCode;
     }
 
@@ -120,7 +120,7 @@ public class Employee {
         this.qualification = qualification;
     }
 
-    public void setCurrentExperience(int currentExperience) {
+    public void setCurrentExperience(Integer currentExperience) {
         this.currentExperience = currentExperience;
     }
 

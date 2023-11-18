@@ -9,7 +9,7 @@ import java.util.List;
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long departmentId;
+    private Long departmentId;
 
     public enum DepartmentName{
         HR,
@@ -35,7 +35,7 @@ public class Department {
 
     public Department(){}
 
-    public void setDepartmentId(long departmentId) {
+    public void setDepartmentId(Long departmentId) {
         this.departmentId = departmentId;
     }
 

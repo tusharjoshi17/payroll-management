@@ -10,19 +10,19 @@ import java.time.LocalDate;
 public class TimeInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long timeInformationId;
+    private Long timeInformationId;
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
-    private int workedHours;
-    private int offHours;
-    private int daysOff;
-    private int overTime;
-    private int extraDays;
+    private Integer workedHours;
+    private Integer offHours;
+    private Integer daysOff;
+    private Integer overTime;
+    private Integer extraDays;
     private LocalDate workPeriodStartDate;
     private LocalDate workPeriodEndDate;
 
-    public TimeInformation(Employee employee, int workedHours, int offHours, int daysOff, int overTime, int extraDays, LocalDate workPeriodStartDate, LocalDate workPeriodEndDate) {
+    public TimeInformation(Employee employee, Integer workedHours, Integer offHours, Integer daysOff, Integer overTime, Integer extraDays, LocalDate workPeriodStartDate, LocalDate workPeriodEndDate) {
         this.employee = employee;
         this.workedHours = workedHours;
         this.offHours = offHours;
@@ -34,7 +34,7 @@ public class TimeInformation {
     }
     public TimeInformation(){}
 
-    public void setTimeInformationId(long timeInformationId) {
+    public void setTimeInformationId(Long timeInformationId) {
         this.timeInformationId = timeInformationId;
     }
 
@@ -42,29 +42,27 @@ public class TimeInformation {
         this.employee = employee;
     }
 
-    public void setWorkedHours(int workedHours) {
+    public void setWorkedHours(Integer workedHours) {
         this.workedHours = workedHours;
     }
 
-    public void setOffHours(int offHours) {
+    public void setOffHours(Integer offHours) {
         this.offHours = offHours;
     }
 
-    public void setDaysOff(int daysOff) {
+    public void setDaysOff(Integer daysOff) {
         this.daysOff = daysOff;
     }
 
-    public void setOverTime(int overTime) {
+    public void setOverTime(Integer overTime) {
         this.overTime = overTime;
     }
 
-    public void setExtraDays(int extraDays) {
+    public void setExtraDays(Integer extraDays) {
         this.extraDays = extraDays;
     }
 
-    public void setWorkPeriodStartDate(LocalDate workPeriodStartDate) {
-        this.workPeriodStartDate = workPeriodStartDate;
-    }
+    public void setWorkPeriodStartDate(LocalDate workPeriodStartDate) {this.workPeriodStartDate = workPeriodStartDate;}
 
     public void setWorkPeriodEndDate(LocalDate workPeriodEndDate) {
         this.workPeriodEndDate = workPeriodEndDate;

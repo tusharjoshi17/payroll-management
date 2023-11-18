@@ -11,18 +11,18 @@ import java.time.LocalDate;
 public class WorkingHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long workingHistoryId;
+    private Long workingHistoryId;
 @ManyToOne
 @JoinColumn(name = "employee_id")
 private Employee employee;
 //(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 private String companyName;
 private String employerName;
-private int yearsOfExperience;
+private Integer yearsOfExperience;
 private LocalDate previousStartDate;
 private LocalDate previousEndDate;
 
-    public WorkingHistory(Employee employee, String companyName, String employerName, int yearsOfExperience, LocalDate previousStartDate, LocalDate previousEndDate) {
+    public WorkingHistory(Employee employee, String companyName, String employerName, Integer yearsOfExperience, LocalDate previousStartDate, LocalDate previousEndDate) {
         this.employee = employee;
         this.companyName = companyName;
         this.employerName = employerName;
@@ -32,7 +32,7 @@ private LocalDate previousEndDate;
     }
     public WorkingHistory(){}
 
-    public void setWorkingHistoryId(long workingHistoryId) {
+    public void setWorkingHistoryId(Long workingHistoryId) {
         this.workingHistoryId = workingHistoryId;
     }
 
@@ -48,7 +48,7 @@ private LocalDate previousEndDate;
         this.employerName = employerName;
     }
 
-    public void setYearsOfExperience(int yearsOfExperience) {
+    public void setYearsOfExperience(Integer yearsOfExperience) {
         this.yearsOfExperience = yearsOfExperience;
     }
 

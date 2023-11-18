@@ -10,13 +10,13 @@ import java.time.LocalDate;
 public class SalaryInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long salaryId;
+    private Long salaryId;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
-    private double monthlySalary;
-    private double monthlyDeductions;
+    private Double monthlySalary;
+    private Double monthlyDeductions;
     private LocalDate salaryPeriodStartDate;
     private LocalDate salaryPeriodEndDate;
 
@@ -29,7 +29,7 @@ public class SalaryInformation {
     }
     public SalaryInformation(){}
 
-    public void setSalaryId(long salaryId) {
+    public void setSalaryId(Long salaryId) {
         this.salaryId = salaryId;
     }
 
@@ -37,11 +37,11 @@ public class SalaryInformation {
         this.employee = employee;
     }
 
-    public void setMonthlySalary(double monthlySalary) {
+    public void setMonthlySalary(Double monthlySalary) {
         this.monthlySalary = monthlySalary;
     }
 
-    public void setMonthlyDeductions(double monthlyDeductions) {
+    public void setMonthlyDeductions(Double monthlyDeductions) {
         this.monthlyDeductions = monthlyDeductions;
     }
 
