@@ -1,10 +1,16 @@
 package com.tusharjoshi.payrollmanagement.model.entities;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
+import lombok.Setter;
+
+
 import java.time.LocalDate;
 
 
 @Getter
+@Setter
 @Entity
 @Table(name = "employeeDetails")
 public class Employee {
@@ -13,17 +19,24 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employeeId;
 
-    private String PersonalId;
+    @Column(nullable = false)
+    @NotBlank(message = "Personal Id is mandatory")
+    @Size(min = 5, max = 5)
+    private String personalId;
 //    @Column(nullable = false)
     private String firstName;
     private String middleName;
 //    @Column(nullable = false)
     private String lastName;
-
+    @Column(nullable = false)
+    @NotBlank(message = "Phone number is mandatory")
+    @Size(min = 10, max = 10)
     private String phoneNumber;
     private String address;
     private String city;
-    private Long pinCode;
+
+    @Size(min = 6, max = 6)
+    private Integer pinCode;
     private LocalDate dateOfBirth;
     private String qualification;
     private Integer currentExperience;
@@ -54,11 +67,11 @@ public class Employee {
 //    private WorkingHistory workingHistory;
 
 
-    public Employee(String PersonalId, String firstName, String middleName, String lastName,
+    public Employee(String personalId, String firstName, String middleName, String lastName,
                     String phoneNumber, String city, String address, Long pinCode, String qualification,
                     Integer currentExperience, LocalDate dateOfBirth, LocalDate startDate, LocalDate endDate,
                     Gender gender, MaritalStatus maritalStatus, Department department) {
-        this.PersonalId = PersonalId;
+        this.personalId = personalId;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -79,71 +92,4 @@ public class Employee {
     public Employee() {
     }
 
-
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public void setPersonalId(String personalId) {
-        PersonalId = personalId;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setPinCode(Long pinCode) {
-        this.pinCode = pinCode;
-    }
-
-    public void setQualification(String qualification) {
-        this.qualification = qualification;
-    }
-
-    public void setCurrentExperience(Integer currentExperience) {
-        this.currentExperience = currentExperience;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public void setMaritalStatus(MaritalStatus maritalStatus) {
-        this.maritalStatus = maritalStatus;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
 }

@@ -2,10 +2,12 @@ package com.tusharjoshi.payrollmanagement.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Getter
+@Setter
 @Entity
 @Table(name = "working_history")
 public class WorkingHistory {
@@ -32,31 +34,4 @@ private LocalDate previousEndDate;
     }
     public WorkingHistory(){}
 
-    public void setWorkingHistoryId(Long workingHistoryId) {
-        this.workingHistoryId = workingHistoryId;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public void setEmployerName(String employerName) {
-        this.employerName = employerName;
-    }
-
-    public void setYearsOfExperience(Integer yearsOfExperience) {
-        this.yearsOfExperience = yearsOfExperience;
-    }
-
-    public void setPreviousStartDate(LocalDate previousStartDate) {
-        this.previousStartDate = previousStartDate;
-    }
-
-    public void setPreviousEndDate(LocalDate previousEndDate) {
-        this.previousEndDate = previousEndDate;
-    }
 }

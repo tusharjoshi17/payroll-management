@@ -2,10 +2,12 @@ package com.tusharjoshi.payrollmanagement.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Getter
+@Setter
 @Entity
 public class TimeInformation {
     @Id
@@ -34,37 +36,4 @@ public class TimeInformation {
     }
     public TimeInformation(){}
 
-    public void setTimeInformationId(Long timeInformationId) {
-        this.timeInformationId = timeInformationId;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public void setWorkedHours(Integer workedHours) {
-        this.workedHours = workedHours;
-    }
-
-    public void setOffHours(Integer offHours) {
-        this.offHours = offHours;
-    }
-
-    public void setDaysOff(Integer daysOff) {
-        this.daysOff = daysOff;
-    }
-
-    public void setOverTime(Integer overTime) {
-        this.overTime = overTime;
-    }
-
-    public void setExtraDays(Integer extraDays) {
-        this.extraDays = extraDays;
-    }
-
-    public void setWorkPeriodStartDate(LocalDate workPeriodStartDate) {this.workPeriodStartDate = workPeriodStartDate;}
-
-    public void setWorkPeriodEndDate(LocalDate workPeriodEndDate) {
-        this.workPeriodEndDate = workPeriodEndDate;
-    }
 }
