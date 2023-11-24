@@ -1,7 +1,6 @@
 package com.tusharjoshi.payrollmanagement.model.entities;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,18 +28,25 @@ public class Employee {
 //    @Column(nullable = false)
     private String lastName;
     @Column(nullable = false)
+//    @NotBlank(message = "Phone number is mandatory", groups = {Employee.class}, payload = {})
     @NotBlank(message = "Phone number is mandatory")
-    @Size(min = 10, max = 10)
+    @Size(min = 10, max = 10, message = "Phone number should be 10 digits")
     private String phoneNumber;
     private String address;
     private String city;
 
-    @Size(min = 6, max = 6)
-    private Integer pinCode;
+    @Size(min = 6, max = 6, message = "Pin code should be 6 digits")
+    private String pinCode;
+
+    @Past(message = "Date of birth should be in past")
     private LocalDate dateOfBirth;
     private String qualification;
     private Integer currentExperience;
+
+    @FutureOrPresent(message = "Start date should be in present or future")
     private LocalDate startDate;
+
+    @Future(message = "End date should be in future")
     private LocalDate endDate;
 
     public enum Gender{
@@ -48,12 +54,14 @@ public class Employee {
         Female
     }
     @Enumerated(EnumType.STRING)
+    @NotBlank(message = "Gender is mandatory")
     private Gender gender;
     public enum MaritalStatus{
         Married,
         Unmarried
     }
     @Enumerated(EnumType.STRING)
+    @NotBlank(message = "Marital status is mandatory")
     private MaritalStatus maritalStatus;
 
     @ManyToOne
@@ -68,7 +76,7 @@ public class Employee {
 
 
     public Employee(String personalId, String firstName, String middleName, String lastName,
-                    String phoneNumber, String city, String address, Long pinCode, String qualification,
+                    String phoneNumber, String city, String address, String pinCode, String qualification,
                     Integer currentExperience, LocalDate dateOfBirth, LocalDate startDate, LocalDate endDate,
                     Gender gender, MaritalStatus maritalStatus, Department department) {
         this.personalId = personalId;

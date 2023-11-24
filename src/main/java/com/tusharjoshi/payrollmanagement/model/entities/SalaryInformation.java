@@ -1,6 +1,8 @@
 package com.tusharjoshi.payrollmanagement.model.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,9 +19,15 @@ public class SalaryInformation {
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
+
+    @NotNull(message = "Monthly salary is mandatory")
+    @Positive(message = "Monthly salary should be positive")
     private Double monthlySalary;
     private Double monthlyDeductions;
+
+    @NotNull(message = "Salary period start date is mandatory")
     private LocalDate salaryPeriodStartDate;
+    @NotNull(message = "Salary period end date is mandatory")
     private LocalDate salaryPeriodEndDate;
 
     public SalaryInformation(Employee employee, Double monthlySalary, Double monthlyDeductions, LocalDate salaryPeriodStartDate, LocalDate salaryPeriodEndDate) {
