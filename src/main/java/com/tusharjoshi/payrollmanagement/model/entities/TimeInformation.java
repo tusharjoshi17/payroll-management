@@ -13,7 +13,7 @@ public class TimeInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long timeInformationId;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
     private Integer workedHours;

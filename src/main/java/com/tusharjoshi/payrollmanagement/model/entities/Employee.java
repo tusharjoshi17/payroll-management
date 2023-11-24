@@ -6,6 +6,7 @@ import lombok.Setter;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Getter
@@ -36,7 +37,7 @@ public class Employee {
     private String city;
 
     @Size(min = 6, max = 6, message = "Pin code should be 6 digits")
-    private String pinCode;
+    private Integer pinCode;
 
     @Past(message = "Date of birth should be in past")
     private LocalDate dateOfBirth;
@@ -68,6 +69,15 @@ public class Employee {
     @JoinColumn(name="department_id")
     private Department department;
 
+    @OneToOne(mappedBy = "employee")
+    private SalaryInformation salaryInformation;
+
+    @OneToOne(mappedBy = "employee")
+    private TimeInformation timeInformation;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private List<WorkingHistory> workingHistory;
+
 //    @OneToOne(mappedBy = "employee")
 //    private SalaryInformation salaryInformation;
 //
@@ -76,7 +86,7 @@ public class Employee {
 
 
     public Employee(String personalId, String firstName, String middleName, String lastName,
-                    String phoneNumber, String city, String address, String pinCode, String qualification,
+                    String phoneNumber, String city, String address, Integer pinCode, String qualification,
                     Integer currentExperience, LocalDate dateOfBirth, LocalDate startDate, LocalDate endDate,
                     Gender gender, MaritalStatus maritalStatus, Department department) {
         this.personalId = personalId;

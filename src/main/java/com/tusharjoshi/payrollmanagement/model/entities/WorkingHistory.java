@@ -14,6 +14,7 @@ public class WorkingHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long workingHistoryId;
+
 @ManyToOne
 @JoinColumn(name = "employee_id")
 private Employee employee;
