@@ -1,12 +1,15 @@
 package com.tusharjoshi.payrollmanagement.model.entities;
-
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Department {
     @Id
@@ -28,12 +31,4 @@ public class Department {
 
     @OneToMany(mappedBy = "department")
     private List<Employee> employees;
-
-    public Department(DepartmentName departmentName, List<Employee> employees) {
-        this.departmentName = departmentName;
-        this.employees = employees;
-    }
-
-    public Department(){}
-
 }

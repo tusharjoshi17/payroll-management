@@ -1,14 +1,16 @@
 package com.tusharjoshi.payrollmanagement.model.entities;
-
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class TimeInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,17 +25,5 @@ public class TimeInformation {
     private Integer extraDays;
     private LocalDate workPeriodStartDate;
     private LocalDate workPeriodEndDate;
-
-    public TimeInformation(Employee employee, Integer workedHours, Integer offHours, Integer daysOff, Integer overTime, Integer extraDays, LocalDate workPeriodStartDate, LocalDate workPeriodEndDate) {
-        this.employee = employee;
-        this.workedHours = workedHours;
-        this.offHours = offHours;
-        this.daysOff = daysOff;
-        this.overTime = overTime;
-        this.extraDays = extraDays;
-        this.workPeriodStartDate = workPeriodStartDate;
-        this.workPeriodEndDate = workPeriodEndDate;
-    }
-    public TimeInformation(){}
 
 }

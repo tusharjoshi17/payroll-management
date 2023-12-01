@@ -1,17 +1,20 @@
 package com.tusharjoshi.payrollmanagement.model.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
 import java.time.LocalDate;
 import java.util.List;
 
-
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "employeeDetails")
 public class Employee {
 
@@ -84,30 +87,5 @@ public class Employee {
 //    @OneToOne(mappedBy = "employee")
 //    private WorkingHistory workingHistory;
 
-
-    public Employee(String personalId, String firstName, String middleName, String lastName,
-                    String phoneNumber, String city, String address, Integer pinCode, String qualification,
-                    Integer currentExperience, LocalDate dateOfBirth, LocalDate startDate, LocalDate endDate,
-                    Gender gender, MaritalStatus maritalStatus, Department department) {
-        this.personalId = personalId;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.city = city;
-        this.address = address;
-        this.pinCode = pinCode;
-        this.qualification = qualification;
-        this.currentExperience = currentExperience;
-        this.dateOfBirth = dateOfBirth;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.gender = gender;
-        this.maritalStatus = maritalStatus;
-        this.department = department;
-    }
-
-    public Employee() {
-    }
 
 }

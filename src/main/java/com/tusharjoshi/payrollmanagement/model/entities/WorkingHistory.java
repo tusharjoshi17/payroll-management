@@ -1,13 +1,15 @@
 package com.tusharjoshi.payrollmanagement.model.entities;
-
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "working_history")
 public class WorkingHistory {
@@ -24,15 +26,4 @@ private String employerName;
 private Integer yearsOfExperience;
 private LocalDate previousStartDate;
 private LocalDate previousEndDate;
-
-    public WorkingHistory(Employee employee, String companyName, String employerName, Integer yearsOfExperience, LocalDate previousStartDate, LocalDate previousEndDate) {
-        this.employee = employee;
-        this.companyName = companyName;
-        this.employerName = employerName;
-        this.yearsOfExperience = yearsOfExperience;
-        this.previousStartDate = previousStartDate;
-        this.previousEndDate = previousEndDate;
-    }
-    public WorkingHistory(){}
-
 }
